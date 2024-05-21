@@ -14,17 +14,6 @@ import interations as ui
 
 
 #Saudações // Menu Principal
-print('### Bem-vindo a Dungeon Man ###')
-print('--- ver 1.5 - mai 2024 ---')
-start = input('Deseja iniciar o jogo? (S/N): ')
-if (start.upper() == "N" or start == "NÃO"):
-    exit()
-else:
-    playerName = input('> Digite um nome para seu personagem: ')
-    print(f'\n>> Parabens! você criou: {playerName}, mas é preciso definir qual classe ele(a) pertence.')
-    player = createCharacter()
-    print(f"Isso! {playerName} é da classe {player['class']}!")
-
 
 # Etapas e Funcionalidades do Jogo:
 # Etapa 1 - Criar personagem
