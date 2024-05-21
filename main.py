@@ -9,7 +9,11 @@ import market
 from interations import Interface as Ui
 from interations import Player
 
-Ui.start()
+Ui.play()
+playername = Ui.setPlayerName()
+playerclass = Ui.setPlayerClass()
+player = Player(playername, playerclass)
+player.summarize()
 
 # Etapas e Funcionalidades do Jogo:
 # Etapa 1 - Criar personagem
