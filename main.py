@@ -6,7 +6,9 @@ Description: RPG Experimental Backend Game
 
 import spawner as sp
 import market
-import interations as ui
+from interations import Interface as ui
+
+ui.comunicador('Olá Mundo')
 
 # Etapas e Funcionalidades do Jogo:
 # Etapa 1 - Criar personagem
