@@ -16,10 +16,11 @@ player = Player(playername, playerclass)
 player.summarize()
 
 # Etapas e Funcionalidades do Jogo:
-# Etapa 1 - Criar personagem
-    # Sistema de Classes
-    # Sistema de Atributos
+# Etapa 1 - Criar personagem -- OK
+    # Sistema de Classes -- OK
+    # Sistema de Atributos -- OK
 # Etapa 2 - Lutar contra um inimigo
+    # Sistema de Spawn de Inimigos
     # Sistema de Luta
     # Sistema de especiais
     # Sistema de fuga
