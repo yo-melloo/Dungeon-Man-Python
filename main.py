@@ -6,24 +6,21 @@ Description: RPG Experimental Backend Game
 
 import spawner as Sp
 import market
-import interations as ui
-import random
+from interations import Interface as Ui
+from interations import Player
 
-level = random.randint(1,32)
-luck = random.randint(0,3)
-print(f'sorte: {luck}')
-print(f'entrando no level {level}')
-
-npcMob = Sp.Mob.spawn(level, luck)
-#print(type(npcMob))
-print(f"*** Você encontrou um {npcMob['name']}")
-
+Ui.play()
+playername = Ui.setPlayerName()
+playerclass = Ui.setPlayerClass()
+player = Player(playername, playerclass)
+player.summarize()
 
 # Etapas e Funcionalidades do Jogo:
-# Etapa 1 - Criar personagem
-    # Sistema de Classes
-    # Sistema de Atributos
+# Etapa 1 - Criar personagem -- OK
+    # Sistema de Classes -- OK
+    # Sistema de Atributos -- OK
 # Etapa 2 - Lutar contra um inimigo
+    # Sistema de Spawn de Inimigos
     # Sistema de Luta
     # Sistema de especiais
     # Sistema de fuga
