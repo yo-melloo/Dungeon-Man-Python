@@ -21,7 +21,25 @@ class Interface:
 
         print('### Bem-vindo a Dungeon Man ###')
         print('--- ver 1.5 - mai 2024 ---')
+    
+    def enemyInfo(mob):
+        line = '----------------------------\n' # string útil para acelerar código
+        print(f"> {mob['name']}\n> HP: {mob['hp']}\n> ATK: {mob['atk']}\n> DEF: {mob['def']}\n> SPD: {mob['spd']}\n> info): {mob['desc']}")
 
+class Player:
+    def __init__(self, playername, playerclass) -> None:
+        self.playername = playername
+        self.playerAttributes = playerclass
+        self.playerclass = playerclass['class']
+        self.playerHP = playerclass['hp']
+        #self.playerMaxHP = playerclass['max_hp']
+        self.playerATK = playerclass['atk']
+        self.playerDEF = playerclass['def']
+        self.playerSPD = playerclass['spd']
+        self.playerSPC = playerclass['spc_attack']
+        self.playerDesc = playerclass['desc']
+        pass
+    
     def setPlayerName():
         playerName = input('> Digite um nome para seu personagem: ').capitalize()
         print(f'*** você criou {playerName} ***\n> Defina uma classe para {playerName} a seguir:')
@@ -64,20 +82,6 @@ class Interface:
                 print('> digite o nome correto de uma das CLASSES acima')
         
         return playerClass
-                        
-
-class Player:
-    def __init__(self, playername, playerclass) -> None:
-        self.playername = playername
-        self.playerAttributes = playerclass
-        self.playerclass = playerclass['class']
-        self.playerHP = playerclass['hp']
-        self.playerATK = playerclass['atk']
-        self.playerDEF = playerclass['def']
-        self.playerSPD = playerclass['spd']
-        self.playerSPC = playerclass['spc_attack']
-        self.playerDesc = playerclass['desc']
-        pass
-
+    
     def summarize(self): # -- Função experimental para uso do ".self"
         print(f'-- Olá, meu nome é {self.playername}, será um prazer te acompanhar nessa jornada no incível mundo de Dungeon Man!\n-- Eu sou um {self.playerclass}, isso significa que sou {self.playerDesc}')

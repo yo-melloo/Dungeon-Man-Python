@@ -1,7 +1,18 @@
 import random
+import interations
 
 class Mob:
-    def __init__(self) -> None:
+    def __init__(self, mobinfo) -> None:
+        '''
+        #mob = {'name':'mob DEFAULT','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB'}
+        self.mobname = mobinfo['name']
+        self.mobHP = mobinfo['hp']
+        #self.mobMaxHP = mobinfo['max_hp']
+        self.mobATK = mobinfo['atk']
+        self.mobDEF = mobinfo['def']
+        self.mobSPD = mobinfo['spd']
+        self.mobDesc = mobinfo['desc']
+        '''
         pass
     
     def spawn(level, luck):
@@ -68,3 +79,4 @@ class Mob:
             mob = {'name':'mob BOSS stage 1','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT BOSS MOB'}
         
         return mob
+    
