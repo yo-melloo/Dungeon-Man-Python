@@ -4,9 +4,20 @@ Author: Gustavo Mello
 Description: RPG Experimental Backend Game
 '''
 
-import spawner as sp
+import spawner as Sp
 import market
 import interations as ui
+import random
+
+level = random.randint(1,32)
+luck = random.randint(0,3)
+print(f'sorte: {luck}')
+print(f'entrando no level {level}')
+
+npcMob = Sp.Mob.spawn(level, luck)
+#print(type(npcMob))
+print(f"*** Você encontrou um {npcMob['name']}")
+
 
 # Etapas e Funcionalidades do Jogo:
 # Etapa 1 - Criar personagem
