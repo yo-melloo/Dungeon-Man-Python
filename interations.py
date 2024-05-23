@@ -49,7 +49,7 @@ class Player:
         line = '----------------------------\n' # string útil para acelerar código
         playerClassWarrior = {'class':'Guerreiro','hp':280,'atk':80,'def':45,'spd':20,'spc_attack':'NONE', 'desc':'bom em ataque e defesa'}
         playerClassShooter = {'class':'Atirador','hp':200,'atk':95,'def':30,'spd':35,'spc_attack':'NONE', 'desc':'excelente em ataque e furtividade'}
-        playerClassMage = {'class':'Mago','hp':220,'atk':70,'def':40,'spd':35,'spc_attack':'Fire Ball', 'desc':'excelente em jogadas estratégicas'}
+        playerClassMage = {'class':'Mago','hp':220,'atk':75,'def':40,'spd':35,'spc_attack':'Fire Ball', 'desc':'excelente em jogadas estratégicas'}
         playerClassDemon = {'class':'Demônio','hp':310,'atk':90,'def':55,'spd':40,'spc_attack':'Diabolic Punch', 'desc':'excelente em lutas'}
         
         print('\n### Classes ###\n')
@@ -84,4 +84,41 @@ class Player:
         return playerClass
     
     def summarize(self): # -- Função experimental para uso do ".self"
-        print(f'-- Olá, meu nome é {self.playername}, será um prazer te acompanhar nessa jornada no incível mundo de Dungeon Man!\n-- Eu sou um {self.playerclass}, isso significa que sou {self.playerDesc}')
+        print(f'\n-- Olá, meu nome é {self.playername}, será um prazer te acompanhar nessa jornada no incível mundo de Dungeon Man!\n-- Eu sou um {self.playerclass}, isso significa que sou {self.playerDesc}')
+    
+    def attack(self, mob, player, sorte, stack):
+        #mobHP = mob['hp']
+        mobDEF = mob['def']
+        playerATK = player['atk']
+        playerCRIT = int(player['atk'] * (sorte / 10))
+        if (stack >= 100):
+            dano = playerATK + playerCRIT - mobDEF
+            if (dano <= 0): 
+                dano = 0
+                print('*** DANO ZERO ***')
+            else:
+                print('*** DANO CRÍTICO ***')    
+        else:
+            dano = playerATK - mobDEF
+            if (dano <= 0): 
+                dano = 0
+                print('*** DANO ZERO ***')
+            else:
+                print(f"*** {dano}DMG de DANO ***")
+        mob['hp'] -= dano
+        if mob['hp'] < 0:
+            mob['hp'] = 0
+        return mob
+    
+    def stackar(mob, player, stack):
+        if stack == 100:
+            stack = 0
+        print(f'\n\nstacks atual: >>> {stack} <<<')
+        #mobHP = mob['hp']
+        mobDEF = mob['def']
+        playerATK = player['atk']
+        dano = playerATK - mobDEF
+        if (dano <= 0): dano = 0
+        print(f"estacando: {dano}dmg\n\n")
+        return dano
+               

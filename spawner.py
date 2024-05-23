@@ -67,16 +67,44 @@ class Mob:
         
         # ------ ESTAGIO 1 -------
         if (level < 5):
+            defaultmob = {'name':'mob DEFAULT','hp': 100,'atk':10,'def':10,'spd':10,}
             if(luck == 0):
-                mob = {'name':'mob 1','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 1'}
+                mob = {'name':'mob 1','hp': defaultmob['hp'],'atk':defaultmob['atk'],'def':defaultmob['def'],'spd':defaultmob['spd'],'spc_attack':'NONE', 'desc':'DEFAULT MOB 1 - very easy'}
             if(luck == 1):
-                mob = {'name':'mob 2','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 2'}
+                mob = {'name':'mob 2','hp': 200,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 2 - easy'}
             if(luck == 2):
-                mob = {'name':'mob 3','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 3'}
+                mob = {'name':'mob 3','hp': 200,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 3 - medium'}
             if(luck == 3):
-                mob = {'name':'mob 4','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 4'} 
+                mob = {'name':'mob 4','hp': 200,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 4 - hard'} 
         if (level == 5):
             mob = {'name':'mob BOSS stage 1','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT BOSS MOB'}
         
         return mob
     
+    def attack(mob, player, stack):
+        #mobHP = mob['hp']
+        playerDEF = player['def']
+        mobATK = mob['atk']
+        sorte = random.randint(0,3)
+        mobCRIT = int(mob['atk'] * (sorte / 10))
+        if (stack >= 100):
+            stack = 0
+            print('*** DANO CRÍTICO ***')
+            dano = mobATK + mobCRIT - playerDEF
+            if (dano <= 0): 
+                dano = 0
+                print('*** DANO ZERO ***')
+            else:
+                print('*** DANO CRÍTICO ***')
+        else:
+            dano = mobATK - playerDEF
+            if (dano <= 0): 
+                dano = 0
+                print('*** DANO ZERO ***')
+            else:
+                print(f"*** {dano}DMG de DANO ***")
+
+        player['hp'] -= dano
+        if player['hp'] < 0:
+            player['hp'] = 0
+        return player
