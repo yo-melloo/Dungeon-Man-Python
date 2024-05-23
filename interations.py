@@ -23,8 +23,21 @@ class Interface:
         print('--- ver 1.5 - mai 2024 ---')
     
     def enemyInfo(mob):
-        line = '----------------------------\n' # string útil para acelerar código
-        print(f"> {mob['name']}\n> HP: {mob['hp']}\n> ATK: {mob['atk']}\n> DEF: {mob['def']}\n> SPD: {mob['spd']}\n> info): {mob['desc']}")
+        
+        #### LEVEL 00 ####
+        Inimigo: mob['name']
+        HP: mob['hp'] // ATK: mob['atk'] // DEF: mob['def'] // VEL: mob['spd']
+        SPECIAL: mob['spc_attack']
+
+        (INFO) mob['desc']
+        ------------------------
+        [F] ATACAR
+        [B] INVENTÁRIO
+        [S] ESPECIAL
+        [Q] FUGIR
+
+        > DIGITE UM COMANDO A SER EXECUTADO: 
+
 
 class Player:
     def __init__(self, playername, playerclass) -> None:

@@ -36,51 +36,33 @@ playeractions = Player(playername, player) # -- inicia personagem
 playerAlive = True
 #playerdesc.summarize() # -- Resume personagem
 
+# PARTE 1: ENTRAR NA DUNGEON
 
-# PARTE 2 --- História
-# aqui vai ser criado uma função que exibe trechos do texto da história conforme o nível do jogador (Loop)
-#
+# PARTE 2: ENCONTRAR O MERCADOR
 
-# PARTE 3 --- Pausa / Loja
-# aqui vai ser criado uma função onde o jogador pode comprar, trocar e vender itens do seu inventário
-#
+# PARTE 3: LUTAR CONTRA O PRIMEIRO MONSTRO
 
+# PARTE 4: LER PRIMEIRO TRECHO DE HISTÓRIA
 
-# PARTE 4 --- Looping de Dungeon
-# Aqui vai loop que spawna e cria sistema de combate com mobs
-'''
 level = 1
+sorte = 0
+stack = 0
+playeralive = True
 
-while (playerAlive == True and level <= 32):
-    playerluck = random.randint(1,3)
-    print(f"Level: {level} - SORTE {playerluck}")
-    mob = Mob.spawn(level, playerluck) # -- Spawna o mob, conforme o level e sorte do jogador
+#loop de luta:
+while (playeralive == True and level <= 32): # condições para 'descer na Dungeon'
+    print(f"Level: {level} - SORTE {sorte}")
+    mob = Mob.spawn(level, sorte) # -- Spawna o mob, conforme o level e sorte do jogador
     Ui.enemyInfo(mob)
     if (input() != ""):
-        playerAlive = False
+        playeralive = False
     else:
+        stack += Player.stackar(mob, player, stack)
+        sorte = random.randint(1,3)
         level += 1
 
-
-# -- Sistema de Dano Crítico (prototipo)
-#sorte = 2
-#mob = Mob.spawn(1, sorte)
-crit = int(player['atk'] * (sorte / 10))
-dano = int(player['atk'] + crit)
-print(f"o seu dano crítico, causaria {crit} dmg de dano adicional no {mob['name']}, um total  de {dano}dmg de dano!")
-'''
-
-sorte = 2
-stack = 0
-mob = Mob.spawn(1, sorte)
-print(f'>> MOB SPAWNADO: {mob}')
 while True:
-    print(f'*** {playername} iniciou ataque!')
-    print(f'> mob ANTES: {mob}')
     mob = playeractions.attack(mob, player, sorte, stack)
-    stack += Player.stackar(mob, player, stack)
-    print(f'> mob DEPOIS: {mob}')
-    input()
     if (mob['hp'] <= 0):
         break
 
