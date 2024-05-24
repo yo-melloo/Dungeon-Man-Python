@@ -20,88 +20,96 @@ class Mob:
         
         # -------ESTAGIO FINAL----
         if (level == 31):
-            mob = {'name':'mob subBOSS final stage','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT BOSS MOB'}
+            mob = {'name':'DEMON KING','hp': 1300,'atk':380,'def':225,'spd':300,'spc_attack':'NONE', 'desc':'SUBBOSS MOB'}
         if (level == 32):
-            mob = {'name':'mob FINAL BOSS','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT BOSS MOB'}
+            mob = {'name':'OOLONG SATAN','hp': 2200,'atk':460,'def':325,'spd':300,'spc_attack':'NONE', 'desc':'ULTIMATE BOSS MOB'}
         
         # ------ ESTAGIO 4 -------
         if (level <= 30):
-            if(luck == 0):
-                mob = {'name':'mob 13','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 1'}
-            if(luck == 1):
-                mob = {'name':'mob 14','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 2'}
-            if(luck == 2):
-                mob = {'name':'mob 15','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 3'}
-            if(luck == 3):
-                mob = {'name':'mob 16','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 4'}
-        if (level == 30):
-            mob = {'name':'mob BOSS stage 4','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT BOSS MOB'}
-        
-        # ------ ESTAGIO 3 -------
-        if (level <= 20):
-            if(luck == 0):
-                mob = {'name':'mob 9','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 1'}
-            if(luck == 1):
-                mob = {'name':'mob 10','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 2'}
-            if(luck == 2):
-                mob = {'name':'mob 11','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 3'}
-            if(luck == 3):
-                mob = {'name':'mob 12','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 4'}
-        if (level == 5):
-            mob = {'name':'mob BOSS','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT BOSS MOB'}
-        if (level == 20):
-            mob = {'name':'mob BOSS stage 3','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT BOSS MOB'}
+            defaultmob = {'name':'DEFAULT STAGE 4','hp': 950,'atk':480,'def':280,'spd':90,}
             
-        # ------ ESTAGIO 2 -------
-        if (level <= 10):
-            if(luck == 0):
-                mob = {'name':'mob 5','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 1'}
-            if(luck == 1):
-                mob = {'name':'mob 6','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 2'}
-            if(luck == 2):
-                mob = {'name':'mob 7','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 3'}
-            if(luck == 3):
-                mob = {'name':'mob 8','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 4'}
-        if (level == 10):
-            mob = {'name':'mob BOSS stage 2','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT BOSS MOB'}
-        
-        # ------ ESTAGIO 1 -------
-        if (level < 5):
-            defaultmob = {'name':'mob DEFAULT','hp': 100,'atk':10,'def':10,'spd':10,}
             if(luck == 0):
                 mob = {'name':'mob 1','hp': defaultmob['hp'],'atk':defaultmob['atk'],'def':defaultmob['def'],'spd':defaultmob['spd'],'spc_attack':'NONE', 'desc':'DEFAULT MOB 1 - very easy'}
             if(luck == 1):
-                mob = {'name':'mob 2','hp': 200,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 2 - easy'}
+                mob = mob = {'name':'mob 2','hp': defaultmob['hp'],'atk':defaultmob['atk'],'def':defaultmob['def'],'spd':defaultmob['spd'],'spc_attack':'NONE', 'desc':'DEFAULT MOB 1 - very easy'}
             if(luck == 2):
-                mob = {'name':'mob 3','hp': 200,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 3 - medium'}
+                mob = mob = {'name':'mob 3','hp': defaultmob['hp'],'atk':defaultmob['atk'],'def':defaultmob['def'],'spd':defaultmob['spd'],'spc_attack':'NONE', 'desc':'DEFAULT MOB 1 - very easy'}
             if(luck == 3):
-                mob = {'name':'mob 4','hp': 200,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB 4 - hard'} 
+                mob = mob = {'name':'mob 4','hp': defaultmob['hp'],'atk':defaultmob['atk'],'def':defaultmob['def'],'spd':defaultmob['spd'],'spc_attack':'NONE', 'desc':'DEFAULT MOB 1 - very easy'}
         if (level == 5):
-            mob = {'name':'mob BOSS stage 1','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT BOSS MOB'}
+            mob = mob = {'name':'BOSS STAGE 4','hp': defaultmob['hp'] * 5,'atk':defaultmob['atk'] * 5,'def':defaultmob['def'] * 5,'spd':defaultmob['spd'] * 2,'spc_attack':'NONE', 'desc':'BOSS 1'}
+        
+        # ------ ESTAGIO 3 -------
+        if (level <= 20):
+            defaultmob = {'name':'DEFAULT STAGE 3','hp': 700,'atk':450,'def':200,'spd':60,}
+            
+            if(luck == 0):
+                mob = {'name':'mob 1','hp': defaultmob['hp'],'atk':defaultmob['atk'],'def':defaultmob['def'],'spd':defaultmob['spd'],'spc_attack':'NONE', 'desc':'DEFAULT MOB 1 - very easy'}
+            if(luck == 1):
+                mob = mob = {'name':'mob 2','hp': defaultmob['hp'],'atk':defaultmob['atk'],'def':defaultmob['def'],'spd':defaultmob['spd'],'spc_attack':'NONE', 'desc':'DEFAULT MOB 1 - very easy'}
+            if(luck == 2):
+                mob = mob = {'name':'mob 3','hp': defaultmob['hp'],'atk':defaultmob['atk'],'def':defaultmob['def'],'spd':defaultmob['spd'],'spc_attack':'NONE', 'desc':'DEFAULT MOB 1 - very easy'}
+            if(luck == 3):
+                mob = mob = {'name':'mob 4','hp': defaultmob['hp'],'atk':defaultmob['atk'],'def':defaultmob['def'],'spd':defaultmob['spd'],'spc_attack':'NONE', 'desc':'DEFAULT MOB 1 - very easy'}
+        if (level == 5):
+            mob = mob = {'name':'BOSS STAGE 3','hp': defaultmob['hp'] * 5,'atk':defaultmob['atk'] * 5,'def':defaultmob['def'] * 5,'spd':defaultmob['spd'] * 2,'spc_attack':'NONE', 'desc':'BOSS 1'}
+            
+        # ------ ESTAGIO 2 -------
+        if (level <= 5):
+            defaultmob = {'name':'DEFAULT STAGE 2','hp': 300,'atk':200,'def':90,'spd':40,}
+            
+            if(luck == 0):
+                mob = {'name':'mob 1','hp': defaultmob['hp'],'atk':defaultmob['atk'],'def':defaultmob['def'],'spd':defaultmob['spd'],'spc_attack':'NONE', 'desc':'DEFAULT MOB 1 - very easy'}
+            if(luck == 1):
+                mob = mob = {'name':'mob 2','hp': defaultmob['hp'],'atk':defaultmob['atk'],'def':defaultmob['def'],'spd':defaultmob['spd'],'spc_attack':'NONE', 'desc':'DEFAULT MOB 1 - very easy'}
+            if(luck == 2):
+                mob = mob = {'name':'mob 3','hp': defaultmob['hp'],'atk':defaultmob['atk'],'def':defaultmob['def'],'spd':defaultmob['spd'],'spc_attack':'NONE', 'desc':'DEFAULT MOB 1 - very easy'}
+            if(luck == 3):
+                mob = mob = {'name':'mob 4','hp': defaultmob['hp'],'atk':defaultmob['atk'],'def':defaultmob['def'],'spd':defaultmob['spd'],'spc_attack':'NONE', 'desc':'DEFAULT MOB 1 - very easy'}
+        if (level == 5):
+            mob = mob = {'name':'BOSS STAGE 2','hp': defaultmob['hp'] * 5,'atk':defaultmob['atk'] * 5,'def':defaultmob['def'] * 5,'spd':defaultmob['spd'] * 2,'spc_attack':'NONE', 'desc':'BOSS 1'}
+        
+        # ------ ESTAGIO 1 -------
+        if (level < 5):
+            defaultmob = {'name':'DEFAULT STAGE 1','hp': 120,'atk':60,'def':25,'spd':30,}
+            
+            if(luck == 0): # -- very easy
+                mob = {'name':'mob 1','hp': defaultmob['hp'],'atk':defaultmob['atk'],'def':defaultmob['def'],'spd':defaultmob['spd'],'spc_attack':'NONE', 'desc':'DEFAULT MOB 1 - very easy'}
+            if(luck == 1): # -- easy
+                mob = mob = {'name':'mob 2','hp': defaultmob['hp'],'atk':defaultmob['atk'],'def':defaultmob['def'],'spd':defaultmob['spd'],'spc_attack':'NONE', 'desc':'DEFAULT MOB 1 - very easy'}
+            if(luck == 2): # -- medium
+                mob = mob = {'name':'mob 3','hp': defaultmob['hp'],'atk':defaultmob['atk'],'def':defaultmob['def'],'spd':defaultmob['spd'],'spc_attack':'NONE', 'desc':'DEFAULT MOB 1 - very easy'}
+            if(luck == 3): # -- hard
+                mob = mob = {'name':'mob 4','hp': defaultmob['hp'],'atk':defaultmob['atk'],'def':defaultmob['def'],'spd':defaultmob['spd'],'spc_attack':'NONE', 'desc':'DEFAULT MOB 1 - very easy'}
+        if (level == 5): # -- boss
+            mob = mob = {'name':'BOSS STAGE 1','hp': defaultmob['hp'] * 5,'atk':defaultmob['atk'] * 5,'def':defaultmob['def'] * 5,'spd':defaultmob['spd'] * 2,'spc_attack':'NONE', 'desc':'BOSS 1'}
         
         return mob
     
-    def attack(mob, player, stack):
+    def attack(mob, player, stack, playername):
+        stack = random.randint(0,100)
+        print(f"mob stacks >> {stack}")
         playerDEF = player['def']
         mobATK = mob['atk']
         sorte = random.randint(0,3)
         mobCRIT = int(mob['atk'] * (sorte / 10))
         if (stack >= 100):
             stack = 0
-            print('*** DANO CRÍTICO ***')
+            print('*** DANO CRÍTICO ***\n')
             dano = mobATK + mobCRIT - playerDEF
             if (dano <= 0): 
                 dano = 0
-                print('*** DANO ZERO ***')
+                print('*** DANO ZERO ***\n')
             else:
                 print('*** DANO CRÍTICO ***')
+                print(f">> {playername} sofreu {dano}DMG de dano\n")
         else:
             dano = mobATK - playerDEF
             if (dano <= 0): 
                 dano = 0
-                print('*** DANO ZERO ***')
+                print('*** DANO ZERO ***\n')
             else:
-                print(f">> {player['name']} sofreu {dano}DMG de dano")
+                print(f">> {playername} sofreu {dano}DMG de dano\n")
 
         player['hp'] -= dano
         if player['hp'] < 0:
