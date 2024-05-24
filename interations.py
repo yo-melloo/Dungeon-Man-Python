@@ -22,23 +22,10 @@ class Interface:
         print('### Bem-vindo a Dungeon Man ###')
         print('--- ver 1.5 - mai 2024 ---')
     
-    def enemyInfo(mob):
+    def enemyInfo(mob,level):
+        info = f"\nInimigo: {mob['name']}\nHP: {mob['hp']} // ATK: {mob['atk']} // DEF: {mob['def']} // VEL: {mob['spd']}\nSPECIAL: {mob['spc_attack']}\n\n(INFO) {mob['desc']}\n------------------------\n"
+        print(info)
         
-        #### LEVEL 00 ####
-        Inimigo: mob['name']
-        HP: mob['hp'] // ATK: mob['atk'] // DEF: mob['def'] // VEL: mob['spd']
-        SPECIAL: mob['spc_attack']
-
-        (INFO) mob['desc']
-        ------------------------
-        [F] ATACAR
-        [B] INVENTÁRIO
-        [S] ESPECIAL
-        [Q] FUGIR
-
-        > DIGITE UM COMANDO A SER EXECUTADO: 
-
-
 class Player:
     def __init__(self, playername, playerclass) -> None:
         self.playername = playername
@@ -51,6 +38,8 @@ class Player:
         self.playerSPD = playerclass['spd']
         self.playerSPC = playerclass['spc_attack']
         self.playerDesc = playerclass['desc']
+        self.items = ['default item 1', 'default item 2']
+        self.maxItems = 4
         pass
     
     def setPlayerName():
@@ -126,12 +115,31 @@ class Player:
     def stackar(mob, player, stack):
         if stack == 100:
             stack = 0
-        print(f'\n\nstacks atual: >>> {stack} <<<')
         #mobHP = mob['hp']
         mobDEF = mob['def']
         playerATK = player['atk']
         dano = playerATK - mobDEF
         if (dano <= 0): dano = 0
-        print(f"estacando: {dano}dmg\n\n")
         return dano
                
+    def backpack(self):
+        print(f"iventário: {self.items}")
+        
+    def gui():
+        gui = "[F] ATACAR\n[B] INVENTÁRIO\n[S] ESPECIAL\n[Q] FUGIR\n\n> DIGITE UM COMANDO A SER EXECUTADO: "
+        response = input(gui)
+        response = response.upper()
+        if response == 'F':
+            return 1
+        if response == 'B':
+            return 2
+        if response == 'S':
+            return 3
+        if response == 'Q':
+            return 4
+        return response
+    
+    def stats(self):
+        info = f"------------------------\n{self.playername}\nHP: {self.playerHP} // ATK: {self.playerATK} // DEF: {self.playerDEF} // VEL: {self.playerSPD}\nSPECIAL: {self.playerSPC}\n"
+        print(info)
+        pass

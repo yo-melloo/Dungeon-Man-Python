@@ -82,7 +82,6 @@ class Mob:
         return mob
     
     def attack(mob, player, stack):
-        #mobHP = mob['hp']
         playerDEF = player['def']
         mobATK = mob['atk']
         sorte = random.randint(0,3)
@@ -102,7 +101,7 @@ class Mob:
                 dano = 0
                 print('*** DANO ZERO ***')
             else:
-                print(f"*** {dano}DMG de DANO ***")
+                print(f">> {player['name']} sofreu {dano}DMG de dano")
 
         player['hp'] -= dano
         if player['hp'] < 0:
