@@ -10,7 +10,7 @@ Description: RPG Experimental Backend Game
     # Sistema de Atributos -- OK
 # Etapa 2 - Lutar contra um inimigo
     # Sistema de Spawn de Inimigos -- OK
-    # Sistema de Luta
+    # Sistema de Luta -> em estágio inicial
     # Sistema de especiais
     # Sistema de fuga
 # Etapa 3 - Subir de nível
@@ -22,11 +22,12 @@ Description: RPG Experimental Backend Game
     # Sistema de troca
 
 
-from spawner import Mob
+#from spawner import Mob
 import market
 from interations import Interface as Ui
 from interations import Player
-import random
+#import random
+#import time
 
 # PARTE 1 --- START!
 Ui.play() # -- Dá play no jogo
@@ -38,8 +39,9 @@ inventario = []
 jogador.summarize(level, inventario) # -- Resume personagem - Aqui tentei usar os conceitos de POO novos que aprendi, mas prevejo que não vou usar muita coisa
 
 ## menu principal ##
-def mainMenu(level):
-        menuString = f'''
+def mainMenu():
+    global level
+    menuString = f'''
 #######[LEVEL {level}]########
 
 [ ] (D) DESCER NA DUNGEON
@@ -47,12 +49,13 @@ def mainMenu(level):
 [ ] (S) SAIR DO JOGO 
 
 (  ) > SELECIONE UMA AÇÃO: '''
-        playerChoice = input(menuString).upper()
-        if (playerChoice == "D"):
-            descerDungeon()
-        elif (playerChoice == "L"):
-            pass
-        elif (playerChoice == "S"):
+    playerChoice = input(menuString).upper()
+    if (playerChoice == "D"):
+        Ui.descerDungeon(level, playername, jogador)
+    elif (playerChoice == "L"):
+        print('loja ainda não foi construída')
+        pass
+    elif (playerChoice == "S"):
             print("------------------------------\n*** encerrando jogo... ***\n------------------------------")
             exit()
 
@@ -68,33 +71,7 @@ def mainMenu(level):
 # PARTE 4 --- Looping de Dungeon
 # Aqui vai loop que spawna e cria sistema de combate com mobs
 
-def descerDungeon():
-    global level
-    level += 1 
-    luck = random.randrange(0,3)   
-    mob = Mob.spawn(level, luck) # -- Spawna o mob, conforme o level e sorte do jogador
-    print(f'''-------------------------
---> {playername.upper()} DESCEU NA DUNGEON **
--------------------------''')
-    print(f"\n#######[LEVEL {level}]########")
-    print(f"\n{mob['name'].upper()} FOI ENCONTRADO!")
-    levelString = f'''
--------------------------
 
- {playername.capitalize()} X {mob['name'].capitalize()}
- 75HP	 100HP
- 20ATK	 25ATK
- 0DEF	 0DEF
- 10VEL	 10VEL
 
-________________________
-
-[ ] (A) ATACAR 
-[ ] (I) INVENTÁRIO 
-[ ] (F) FUGIR 
-
-(  ) > SELECIONE UMA AÇÃO: '''
-    print(levelString)
-
-mainMenu(level)
+mainMenu()
     

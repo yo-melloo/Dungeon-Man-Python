@@ -5,6 +5,9 @@ Description: DUNGEON MAN USER INTERACTIONS
 
 '''
 
+import random
+from spawner import Mob
+
 # Criar Comunicadores
 # Criar Gerador de Personagem e sistema de Level Up
 
@@ -13,19 +16,72 @@ class Interface:
         pass
     def play():
         start = input('> Deseja iniciar o jogo? (S/N): ')
-        if (start.upper() == "N" or start == "NÃO"):
+        if (start.upper() == "N" or start.upper() == "NÃO"):
             print("------------------------------\n*** encerrando jogo... ***\n------------------------------")
             exit()
         
         #newgame = input('> Deseja continuar da onde parou? (S/N)') # -- Modo de Carregar progresso (se for possível)
 
         print('\n\n-----------------------------------\n### Bem-vindo a Dungeon Man ###')
-        print('--- ver 1.5 - mai 2024 ---\n-----------------------------------')
+        print('--- ver 1.5 beta - set 2024 ---\n-----------------------------------')
     
     def enemyInfo(mob):
-        line = '----------------------------\n' # string útil para acelerar código
         return(f"> {mob['name']}\n> HP: {mob['hp']}\n> ATK: {mob['atk']}\n> DEF: {mob['def']}\n> SPD: {mob['spd']}")
     
+    
+    def descerDungeon(level, playername, jogador):
+        playerAlive = True
+        mobAlive = True
+        level += 1
+        luck = random.randrange(0,3)   
+        mob = Mob.spawn(level, luck) # -- Spawna o mob, conforme o level e sorte do jogador
+        
+        print(f'''-------------------------
+--> {playername.upper()} DESCEU NA DUNGEON **
+-------------------------''')
+        
+        print(f"\n#######[LEVEL {level}]########")
+        
+        print(f"\n{mob['name'].upper()} FOI ENCONTRADO!")
+        
+        playerChoices = '''________________________
+
+[ ] (A) ATACAR 
+[ ] (I) INVENTÁRIO 
+[ ] (F) FUGIR 
+
+(  ) > SELECIONE UMA AÇÃO: '''
+
+        while (playerAlive == True and mobAlive == True):
+            print(f'''
+-------------------------
+
+{playername.capitalize()}  X   {mob['name'].capitalize()}
+{jogador.playerHP}HP	    {mob['hp']}HP
+{jogador.playerATK}ATK	    {mob['atk']}ATK
+{jogador.playerDEF}DEF	    {mob['def']}DEF
+{jogador.playerSPD}VEL	    {mob['spd']}VEL
+''')
+            while True:
+            # -- turno do jogador:
+                playerAction = input(playerChoices).upper()
+                
+                if (playerAction == "A"):
+                    mob['hp'] = Player.attack(jogador, mob)
+                    if (mob['hp'] == 0): 
+                        mobAlive = False
+                    break
+                #elif (playerAction == "I"):
+                #elif (playerAction == "F"):
+                else:
+                    print('-> comando inválido\n')
+            
+            # -- turno do Mob
+            if (mobAlive == True):
+                #print(jogador)
+                Mob.attack(mob, jogador)
+                
+            #return level
 
 
 
@@ -94,3 +150,39 @@ class Player:
             print("--> Inventário [vazio]\n\n--------------------##--------------------##\n")
         else:
             print(f'--> Inventário [{inventario}]\n\n--------------------##--------------------##\n')
+
+
+    def attack(self, mob):
+       #if id == 1:
+        mobdef = mob['def']
+        mobhp = mob['hp']
+        mobhpe = mobhp
+
+        playerDMG = self.playerATK - mobdef
+        mobhp -= playerDMG
+        if (mobhp < 0): mobhp = 0
+        
+        attackString = f'''
+--------------------------------------
+    
+    --> {self.playername.capitalize()} atacou {mob['name'].capitalize()}! <--
+
+    {mob['name']} HP: {mobhpe} -> {mobhp} ({playerDMG} de Dano)
+
+--------------------------------------
+
+'''
+        print(attackString)
+        
+        return mobhp
+
+    #elif id == 2:
+    #    autorataquemob = autor['atk']
+    #    alvodefesaplayer = alvo.playerDEF
+    #    alvohpplayer = alvo.playerHP
+    #    
+    #    danomob = autorataquemob - alvodefesaplayer
+    #    alvohpplayer -= danomob
+    #    return alvohpplayer
+    #else:
+    #    return "erro, argumentos inválidos"

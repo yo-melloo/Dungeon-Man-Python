@@ -1,8 +1,7 @@
-import interations
+#import interations
 
 class Mob:
     def __init__(self, mobinfo) -> None:
-        '''
         #mob = {'name':'mob DEFAULT','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT MOB'}
         self.mobname = mobinfo['name']
         self.mobHP = mobinfo['hp']
@@ -11,7 +10,6 @@ class Mob:
         self.mobDEF = mobinfo['def']
         self.mobSPD = mobinfo['spd']
         self.mobDesc = mobinfo['desc']
-        '''
         pass
     
     def spawn(level, luck):
@@ -78,4 +76,25 @@ class Mob:
             mob = {'name':'Slime','hp': 100,'atk':10,'def':10,'spd':10,'spc_attack':'NONE', 'desc':'DEFAULT BOSS MOB'}
         
         return mob
+    
+    def attack(mob, player):
+        playerHP = player.playerHP
+        playerHPe = playerHP
+        mobDMG = mob['atk'] - player.playerDEF
+        if mobDMG < 0: mobDMG = 0
+        playerHP -= mobDMG
+        
+        attackString = f'''
+--------------------------------------
+    
+    --> {mob['name'].capitalize()} atacou {player.playername.capitalize()}! <--
+
+    {player.playername} HP: {playerHPe} -> {playerHP} ({mobDMG} de Dano)
+
+--------------------------------------
+
+'''
+        print(attackString)
+        
+        return playerHP
     
