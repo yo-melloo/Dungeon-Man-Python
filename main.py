@@ -25,6 +25,7 @@ Description: RPG Experimental Backend Game
 #from spawner import Mob
 import market
 from interations import Interface as Ui
+from interations import Game
 from interations import Player
 #import random
 #import time
@@ -42,21 +43,24 @@ jogador.summarize(level, inventario) # -- Resume personagem - Aqui tentei usar o
 def mainMenu():
     global level
     menuString = f'''
-#######[LEVEL {level}]########
+    --MENU PRINCIPAL--
+    
+#######[ LEVEL {level} ]########
 
-[ ] (D) DESCER NA DUNGEON
-[ ] (L) LOJA DE ITENS
-[ ] (S) SAIR DO JOGO 
+(SELECIONE UMA AÇÃO):
+- (D) DESCER NA DUNGEON
+- (L) LOJA DE ITENS
+- (S) SAIR DO JOGO 
 
-(  ) > SELECIONE UMA AÇÃO: '''
+--> '''
     playerChoice = input(menuString).upper()
     if (playerChoice == "D"):
-        Ui.descerDungeon(level, playername, jogador)
+        level = Game.descerDungeon(level, playername, jogador)
     elif (playerChoice == "L"):
         print('loja ainda não foi construída')
         pass
     elif (playerChoice == "S"):
-            print("------------------------------\n*** encerrando jogo... ***\n------------------------------")
+            print("------------------------------\n*** [encerrando jogo...] ***\n------------------------------")
             exit()
 
 # PARTE 2 --- História
@@ -72,6 +76,5 @@ def mainMenu():
 # Aqui vai loop que spawna e cria sistema de combate com mobs
 
 
-
-mainMenu()
-    
+while level < 10:
+    mainMenu()
