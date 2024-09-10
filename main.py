@@ -28,23 +28,31 @@ from interations import Interface as Ui
 from interations import Game
 from interations import Player
 #import random
-#import time
+import time
 
 # PARTE 1 --- START!
 Ui.play() # -- Dá play no jogo
+time.sleep(3)
+
 playername = Player.setPlayerName() # -- recebe nome para personagem
+time.sleep(2)
+
 playerclass = Player.setPlayerClass() # -- recebe classe para personagem
 jogador = Player(playername, playerclass) # -- inicia personagem
 level = 0
 inventario = []
+time.sleep(1)
 jogador.summarize(level, inventario) # -- Resume personagem - Aqui tentei usar os conceitos de POO novos que aprendi, mas prevejo que não vou usar muita coisa
+time.sleep(7)
 
 ## menu principal ##
 def mainMenu():
-    global level
-    menuString = f'''
+    global level 
+    print('''
     --MENU PRINCIPAL--
     
+''')
+    menuString = f'''    
 #######[ LEVEL {level} ]########
 
 (SELECIONE UMA AÇÃO):
@@ -53,7 +61,10 @@ def mainMenu():
 - (S) SAIR DO JOGO 
 
 --> '''
+    time.sleep(2)
     playerChoice = input(menuString).upper()
+    time.sleep(2)
+    
     if (playerChoice == "D"):
         level = Game.descerDungeon(level, playername, jogador)
     elif (playerChoice == "L"):

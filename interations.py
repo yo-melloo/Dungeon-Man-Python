@@ -159,9 +159,15 @@ class Game:
         ~~~~ [{playername.upper()} DESCEU NA DUNGEON] ~~~~
 --------------------------------------------------''')
         
+        time.sleep(3)
+        
         print(f"\n#######[LEVEL {level}]########")
         
+        time.sleep(2)
+        
         print(f"\n---- {mob['name'].upper()} FOI ENCONTRADO! ----")
+        
+        time.sleep(4)
         
         playerChoices = '''________________________
 
@@ -185,25 +191,32 @@ class Game:
 {jogador.playerDEF} DEF - {mob['def']} DEF
 {jogador.playerSPD} VEL - {mob['spd']} VEL
 ''')
-            while True:
-                # -- turno do jogador:
-                playerAction = input(playerChoices).upper()
-                    
-                if (playerAction == "A"):
-                    mob['hp'] = Player.attack(jogador, mob)
-                #elif (playerAction == "I"):
-                #elif (playerAction == "F"):
-                else:
-                    print('-> comando inválido\n')
+            time.sleep(2)
+            #while True:
+            # -- turno do jogador:
+            playerAction = input(playerChoices).upper()
             
-                if (mob['hp'] == 0): 
-                    mobAlive = False
-                    break
+            if (playerAction == "A"):
+                time.sleep(2)
+                mob['hp'] = Player.attack(jogador, mob)
+            #elif (playerAction == "I"):
+            #elif (playerAction == "F"):
+            else:
+                print('-> comando inválido\n')
+        
+            if (mob['hp'] == 0): 
+                mobAlive = False
+        
+    
+    
+            # -- turno do Mob
+            if (mobAlive == True):
+                #print(jogador)
+                print(f"turno do {mob['name']}")
+                time.sleep(3)
+                Mob.attack(mob, jogador)
+            else:
+                print(f"{mob['name'].upper()} FOI DERROTADO!")
+            time.sleep(3)
             
-                # -- turno do Mob
-                if (mobAlive == True):
-                    #print(jogador)
-                    Mob.attack(mob, jogador)
-                
-                
         return level
